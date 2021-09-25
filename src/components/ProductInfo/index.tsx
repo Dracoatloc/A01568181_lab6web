@@ -46,15 +46,21 @@ const ProductInfo : React.FC<ProductInfoProps>  = (props) => {
     });  
   }
 
+  var largeImageUrl = "";
+  if (
+    props.product !== undefined &&
+    props.product.childSkus !== undefined &&
+    props.product.childSkus[0] !== undefined
+  ) {
+    largeImageUrl = props.product.childSkus[0].largeImageUrl;
+  }
+
   return (
     <div className="productInfo">
       <Grid container className="productGrid" spacing={2}>
-        <Grid item lg={4}>
+      <Grid item lg={4}>
           <Paper className="largeImage">
-            <img
-              src="https://dummyimage.com/500x500/000/0011ff"
-              alt="Levi's 501 Original Fit Jeans Jeans para Hombre"
-            />
+            <img src={largeImageUrl} alt={props.product.name} />
           </Paper>
         </Grid>
 
